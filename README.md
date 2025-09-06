@@ -1,4 +1,4 @@
-# 📚 AI-Powered Learning Assistant
+# AI-Powered Learning Assistant
 
 A smart and interactive platform that transforms PDFs and YouTube videos into personalized study companions.
 This project combines **Retrieval-Augmented Generation (RAG)**, semantic search, and quiz generation to create an engaging learning experience.
@@ -13,18 +13,18 @@ With this tool, you can:
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
-✅ **Content Ingestion** – Upload PDF documents or extract transcripts from YouTube videos.
-✅ **Hybrid Search** – Combines **semantic search (FAISS/ChromaDB)** with **keyword search (BM25)** for accurate retrieval.
-✅ **Interactive Q\&A Chatbot** – Ask context-based questions; chatbot answers only from your uploaded material.
-✅ **Automated MCQ Generation** – Create practice quizzes with configurable question counts.
-✅ **Web UI with Streamlit** – Clean and intuitive interface for learners.
-✅ **RESTful API with FastAPI** – Handles ingestion, embedding, retrieval, and LLM logic.
+ **Content Ingestion** – Upload PDF documents or extract transcripts from YouTube videos.
+ **Hybrid Search** – Combines **semantic search (FAISS/ChromaDB)** with **keyword search (BM25)** for accurate retrieval.
+ **Interactive Q\&A Chatbot** – Ask context-based questions; chatbot answers only from your uploaded material.
+ **Automated MCQ Generation** – Create practice quizzes with configurable question counts.
+ **Web UI with Streamlit** – Clean and intuitive interface for learners.
+ **RESTful API with FastAPI** – Handles ingestion, embedding, retrieval, and LLM logic.
 
 ---
 
-## 🛠️ Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -92,7 +92,7 @@ The web app will be available at:
 
 ---
 
-## 🔎 How It Works
+##  How It Works
 
 1. Open the Streamlit app in your browser.
 2. Upload PDFs or enter a YouTube link.
@@ -105,7 +105,7 @@ The web app will be available at:
 
 ---
 
-## ⚙️ Configuration
+##  Configuration
 
 You can customize behavior via `.env`:
 
@@ -117,7 +117,7 @@ You can customize behavior via `.env`:
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 ai-learning-assistant/
@@ -134,7 +134,7 @@ ai-learning-assistant/
 
 ---
 
-## 📌 Roadmap
+##  Roadmap
 
 * [ ] Support for more file formats (PPT, DOCX)
 * [ ] Adaptive quizzes (progress-based difficulty)
@@ -143,13 +143,13 @@ ai-learning-assistant/
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
 
 ---
 
-## 📜 License
+##  License
 
 This project is licensed under the **MIT License**.
 
