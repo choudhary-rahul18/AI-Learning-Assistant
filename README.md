@@ -129,7 +129,7 @@ ai-learning-assistant/
 │── env_config.txt        # Sample environment config
 │── requirements.txt      # Dependencies
 │── uploads/              # Uploaded PDFs/videos
-│── vector_db/            # Local vector storage
+│── pages/                #Fronted- Streamlit files
 ```
 
 ---
