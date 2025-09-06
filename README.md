@@ -38,7 +38,7 @@ With this tool, you can:
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/ai-learning-assistant.git
+git clone [https://github.com/your-username/ai-learning-assistant.git](https://github.com/choudhary-rahul18/AI-Learning-Assistant/tree/main)
 cd ai-learning-assistant
 ```
 
