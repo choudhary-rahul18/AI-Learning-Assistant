@@ -1,83 +1,158 @@
-# AI-Learning-Assistant
-AI-Powered Learning Assistant
-This project is a comprehensive platform that transforms educational content from PDFs and YouTube videos into an interactive learning experience. It leverages a Retrieval-Augmented Generation (RAG) architecture to provide a smart Q&A chatbot and an automated Multiple-Choice Question (MCQ) generator.
+# 📚 AI-Powered Learning Assistant
 
-This is a smart chatbot and MCQ generator that uses Retrieval-Augmented Generation (RAG) to help you study. You can upload PDF files or give it a YouTube link, and it will let you ask questions or create practice quizzes based on that specific content.
+A smart and interactive platform that transforms PDFs and YouTube videos into personalized study companions.
+This project combines **Retrieval-Augmented Generation (RAG)**, semantic search, and quiz generation to create an engaging learning experience.
 
-Key Features
-Content Ingestion: Process learning materials from both PDF files and YouTube video URLs.
+With this tool, you can:
 
-Hybrid Search: Utilizes a combination of semantic (FAISS) and keyword-based (BM25) search for highly relevant context retrieval.
+* Upload PDFs or paste a YouTube link
+* Ask questions directly about the content
+* Generate practice quizzes with auto-created **MCQs**
+* Use a web-based UI for interaction
+* Access everything through a **FastAPI backend + Streamlit frontend**
 
-Interactive Q&A Chat: A conversational chatbot that answers questions based only on the provided content, complete with chat history memory.
+---
 
-Automated MCQ Generation: Dynamically creates practice quizzes from the source material to test user comprehension.
+## 🚀 Key Features
 
-Web-Based UI: An intuitive and user-friendly interface built with Streamlit.
+✅ **Content Ingestion** – Upload PDF documents or extract transcripts from YouTube videos.
+✅ **Hybrid Search** – Combines **semantic search (FAISS/ChromaDB)** with **keyword search (BM25)** for accurate retrieval.
+✅ **Interactive Q\&A Chatbot** – Ask context-based questions; chatbot answers only from your uploaded material.
+✅ **Automated MCQ Generation** – Create practice quizzes with configurable question counts.
+✅ **Web UI with Streamlit** – Clean and intuitive interface for learners.
+✅ **RESTful API with FastAPI** – Handles ingestion, embedding, retrieval, and LLM logic.
 
-RESTful API: A robust backend powered by FastAPI to handle all processing and AI logic.
+---
 
-Getting Started
-Prerequisites
+## 🛠️ Getting Started
 
-Python 3.8+
+### Prerequisites
 
-An LLM service running (e.g., Ollama with the required models accessible at http://localhost:11434)
+* Python **3.8+**
+* An LLM service (e.g., **Ollama** running locally, or OpenAI/Anthropic if using API keys)
 
-Installation
+---
+
+### 1. Installation
 
 Clone the repository:
 
-git clone [https://github.com/your-username/ai-learning-assistant.git](https://github.com/your-username/ai-learning-assistant.git)
+```bash
+git clone https://github.com/your-username/ai-learning-assistant.git
 cd ai-learning-assistant
-
+```
 
 Create and activate a virtual environment:
 
+```bash
 python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
+Install dependencies:
 
-Install the dependencies:
-
+```bash
 pip install -r requirements.txt
+```
 
+---
 
-Set up environment variables:
+### 2. Environment Setup
 
-This project does not require environment variables by default if you are using a local LLM like Ollama. If you switch to a cloud-based model, you can create a .env file from the .env.example template.
+Copy the sample configuration file and update values if needed:
 
-Running the Application
+```bash
+cp env_config.txt .env
+```
 
-You need to run the backend and frontend in two separate terminals from the root directory.
+By default, the app works with **local models (Ollama)**.
+If you want to use **cloud-based models** (OpenAI, Anthropic, etc.), add your API keys in `.env`.
 
-Start the Backend API:
+---
 
+### 3. Running the Application
+
+Run the **backend (FastAPI)**:
+
+```bash
 uvicorn fastapi_backend:app --reload
+```
 
+The API will be available at:
+👉 [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-The API will be available at http://127.0.0.1:8000.
+Run the **frontend (Streamlit)**:
 
-Run the Frontend App:
-
+```bash
 streamlit run app.py
+```
 
+The web app will be available at:
+👉 [http://localhost:8501](http://localhost:8501)
 
-The web application will be accessible at http://localhost:8501.
+---
 
-How It Works
-Open the Streamlit application in your browser.
+## 🔎 How It Works
 
-Upload one or more PDF files or enter a YouTube URL and click "Process".
+1. Open the Streamlit app in your browser.
+2. Upload PDFs or enter a YouTube link.
+3. The backend **chunks text**, creates embeddings, and stores them in the vector database.
+4. Choose your workflow:
 
-The backend (fastapi_backend.py) receives the content. The logic in functions.py chunks the text and creates vector embeddings, which are saved locally in a user_session folder.
+   * **Chat Mode** → Ask questions (uses `Ask_with_llm.py`)
+   * **Practice Mode** → Generate MCQs (uses `MCQs_with_LLM.py`)
+5. Results are retrieved only from your uploaded content.
 
-You are redirected to the Results page.
+---
 
-From here, you can either:
+## ⚙️ Configuration
 
-Go to Practice, which uses MCQs_with_LLM.py to generate and display a quiz.
+You can customize behavior via `.env`:
 
-Go to Chat, which uses Ask_with_llm.py to answer your questions based on the content.
+* **Embedding Model:** `sentence-transformers/all-MiniLM-L6-v2`
+* **LLM Model:** `gpt-3.5-turbo` (can be swapped for local/Ollama models)
+* **Vector DB Options:** `chromadb`, `faiss`, `pinecone`
+* **Quiz Settings:** default 5 questions, max 20
+* **Chunking:** size = 1000, overlap = 200
 
+---
 
+## 📂 Project Structure
+
+```
+ai-learning-assistant/
+│── app.py                # Streamlit frontend
+│── fastapi_backend.py    # FastAPI backend
+│── functions.py          # Core logic (ingestion, embeddings, retrieval)
+│── Ask_with_llm.py       # Q&A chatbot logic
+│── MCQs_with_LLM.py      # Quiz/MCQ generator
+│── env_config.txt        # Sample environment config
+│── requirements.txt      # Dependencies
+│── uploads/              # Uploaded PDFs/videos
+│── vector_db/            # Local vector storage
+```
+
+---
+
+## 📌 Roadmap
+
+* [ ] Support for more file formats (PPT, DOCX)
+* [ ] Adaptive quizzes (progress-based difficulty)
+* [ ] Multi-user authentication & dashboards
+* [ ] Analytics (quiz scores, learning insights)
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+Do you want me to make this **minimal and beginner-friendly** (shortened, like a student project README), or keep it **detailed and professional** (like above, for GitHub portfolio)?
